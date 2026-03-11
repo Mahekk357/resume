@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/e34b4d0969.js" crossorigin="anonymous"></script>
+	<title>Mahekk Shaikh &ndash; Resume</title>
+	<style>
+		@charset "UTF-8";
+		*,
+		*:before,
+		*:after {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  font-family: "Inter", sans-serif;
+		  font-variant-ligatures: none;
+		}
+
+		button#print {
+		  margin: 2rem auto;
+		  border: none;
+		  font-size: 8.5pt;
+		  background: #eee;
+		  color: #425580;
+		  padding: 0.5rem 1rem;
+		  border-radius: 0.2rem;
+		  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+		  cursor: pointer;
+		}
+		button#print:hover {
+		  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+		}
+		button#print:active {
+		  background: #e0e0e0;
+		}
+		button#print i {
+		  font-size: 7pt;
+		  margin-right: 3pt;
+		}
+
+		#page {
+		  width: 8.5in;
+		  min-height: 11in;
+		  margin: 0 auto 4rem;
+		  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1), 0 0 0.5rem rgba(0, 0, 0, 0.2);
+		  font-weight: 400;
+		  font-size: 8.5pt;
+		  line-height: 14pt;
+		}
+		#page .page-contents {
+		  padding: 28pt 42pt 0;
+		}
+
+		@media print {
+		  #page {
+		    box-shadow: none;
+		    height: auto;
+		    width: auto;
+		    margin: 0;
+		  }
+		  button#print {
+		    display: none;
+		  }
+		}
+		@page { margin: 0; }
+
+		p { margin: 0; }
+
+		h1.name {
+		  margin: 0;
+		  text-align: center;
+		  font-size: 20pt;
+		  line-height: 21pt;
+		  height: 21pt;
+		  font-weight: 600;
+		}
+
+		nav.links {
+		  display: flex;
+		  justify-content: center;
+		  align-items: stretch;
+		  padding-top: 7pt;
+		  height: 21pt;
+		}
+		nav.links a {
+		  display: block;
+		  color: inherit;
+		  padding: 0 7pt;
+		  height: 14pt;
+		  line-height: 14pt;
+		  text-decoration: none;
+		  font-size: 8.5pt;
+		}
+
+		a { color: inherit; text-decoration: none; }
+		a i.fa {
+		  font-size: 6pt;
+		  margin: 0 0.5pt -1.5pt;
+		  line-height: 9.24pt;
+		  position: relative;
+		  width: 9.24pt;
+		  height: 9.24pt;
+		}
+		a i.fa:before {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		}
+
+		h2 {
+		  margin: 0;
+		  position: relative;
+		  padding-top: 7pt;
+		  line-height: 14pt;
+		  height: 21pt;
+		  font-size: 12pt;
+		  font-weight: 600;
+		  display: block;
+		  width: 100%;
+		}
+		h2 span {
+		  background: white;
+		  padding-right: 5pt;
+		}
+		h2:before {
+		  content: "";
+		  position: absolute;
+		  top: 8.5pt;
+		  bottom: 0;
+		  margin: auto;
+		  left: 0;
+		  width: 100%;
+		  height: 0;
+		  border-top: 1.5pt solid #a855f7;
+		  z-index: -1;
+		}
+
+		h3 {
+		  margin: 0;
+		  font-size: 9.5pt;
+		  font-weight: 600;
+		  padding-right: 6pt;
+		}
+
+		h4 {
+		  margin: 0;
+		  font-style: italic;
+		  font-weight: 400;
+		  font-size: 8.5pt;
+		}
+
+		strong { font-weight: 600; }
+
+		section {
+		  display: block;
+		  flex-direction: column;
+		}
+
+		section.skills p { min-height: 14pt; margin-bottom: 2pt; }
+		section.skills p:first-of-type { margin-top: 5pt;}
+		section.skills strong {
+		  display: inline-block;
+		  width: 130pt;
+		  vertical-align: top;
+		}
+		section.skills p span {
+		  display: inline-block;
+		  width: calc(100% - 135pt);
+		  vertical-align: top;
+		}
+
+		ul { margin: 0; padding: 0 0 0 14pt; }
+		ul li {
+		  display: block;
+		  position: relative;
+		}
+		ul li:before {
+		  content: "·";
+		  height: 14pt;
+		  width: 14pt;
+		  display: block;
+		  position: absolute;
+		  top: 0;
+		  left: -14pt;
+		  text-align: center;
+		  line-height: 14pt;
+		  font-weight: bold;
+		  font-size: 12pt;
+		}
+
+		section.experience article.work-exp {
+		  position: relative;
+		  margin: 7pt 0 0;
+		}
+		section.experience article.work-exp > div {
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: baseline;
+		  flex-wrap: nowrap;
+		}
+		section.experience .left-side {
+		  display: flex;
+		  align-items: baseline;
+		  gap: 4pt;
+		  min-width: 0;
+		  overflow: hidden;
+		}
+		section.experience .left-side h3 {
+		  white-space: nowrap;
+		  flex-shrink: 0;
+		}
+		section.experience .left-side h4 {
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		}
+		section.experience .right-side {
+		  display: flex;
+		  align-items: baseline;
+		  white-space: nowrap;
+		  padding-left: 8pt;
+		  flex-shrink: 0;
+		}
+
+		span.bullet {
+		  display: block;
+		  position: relative;
+		  width: 14pt;
+		  height: 14pt;
+		}
+		span.bullet:before {
+		  content: "·";
+		  height: 14pt;
+		  width: 14pt;
+		  display: block;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  text-align: center;
+		  line-height: 14pt;
+		  font-weight: bold;
+		  font-size: 12pt;
+		}
+
+		article > div {
+		  display: flex;
+		  justify-content: space-between;
+		}
+		article > div > div {
+		  display: flex;
+		}
+		article > div > div.left-side {
+		  flex-direction: column;
+		}
+		article > div > div.right-side {
+		  justify-content: flex-end;
+		  flex-direction: column;
+		  align-items: flex-end;
+		}
+		section.experience article > div > div.left-side {
+		  flex-direction: row;
+		  align-items: baseline;
+		}
+		section.experience article > div > div.right-side {
+		  flex-direction: row;
+		  align-items: baseline;
+		}
+
+		aside.languages {
+		  color: #444;
+		  font-style: italic;
+		  font-weight: 400;
+		}
+
+		section.projects article.project { min-height: 28pt; }
+		section.projects article.project:first-of-type { margin-top: 7pt; }
+		section.projects div.project-title {
+		  display: flex;
+		  align-items: baseline;
+		  justify-content: flex-start;
+		  height: 14pt;
+		}
+		section.projects div.project-title h3 { padding-right: 3pt; }
+
+		section.education article.institution {
+		  position: relative;
+		  margin-top: 1pt;
+		  margin-bottom: 3pt;
+		}
+	</style>
+</head>
+
+<body>
+	<button id="print"><i class="fa fa-solid fa-print"></i> Print/Save as PDF</button>
+	<div id="page">
+		<div class="page-contents">
+			<header>
+				<h1 class="name">Mahekk Shaikh</h1>
+				<nav class="links">
+					<a href="mailto:mmushaik@uwaterloo.ca">mmushaik@uwaterloo.ca</a>&bull;
+					<a target="_blank" rel="noopener noreferrer" href="tel:5066884680">506-688-4680</a>&bull;
+					<a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/mahekkshaikh">linkedin.com/in/mahekkshaikh</a>&bull;
+					<a target="_blank" rel="noopener noreferrer" href="https://github.com/Mahekk357">github.com/Mahekk357</a>
+				</nav>
+			</header>
+			<main>
+				<!-- Education -->
+				<section class="education">
+					<h2><span>Education</span></h2>
+					<article class="institution">
+						<div style="display:flex; justify-content:space-between; margin-top:7pt;">
+							<div>
+								<h3>University of Waterloo</h3>
+								<h4>Honours Computer Engineering, B.A.Sc. Candidate</h4>
+							</div>
+							<div style="text-align:right; white-space:nowrap; padding-left:12pt;">
+								<h4>2023 &ndash; Present</h4>
+							</div>
+						</div>
+					</article>
+				</section>
+
+				<!-- Skills -->
+				<section class="skills">
+					<h2><span>Technical Skills</span></h2>
+					<p><strong>Languages</strong><span>C, C++, C#/.NET, Python, JavaScript, TypeScript, SQL, VHDL, MATLAB, Assembly (RISC-V)</span></p>
+					<p><strong>Frameworks &amp; Libraries</strong><span>Vue.js, Node.js, Express, Bootstrap, Streamlit, LangChain, Pandas, NumPy</span></p>
+					<p><strong>Infrastructure &amp; Tools</strong><span>Git/GitHub Actions, Azure, Linux, Figma, Confluence, Jira</span></p>
+					<p><strong>Data &amp; ML</strong><span>FAISS, OpenAI API, LangChain, Pandas, NumPy</span></p>
+					<p><strong>Hardware</strong><span>STM32 Nucleo-64, STM32CubeIDE, FPGA, Oscilloscopes, Function Generators, Soldering, Proteus</span></p>
+				</section>
+
+				<!-- Experience -->
+				<section class="experience">
+					<h2><span>Work Experience</span></h2>
+
+					<article class="work-exp">
+						<div>
+							<div class="left-side">
+								<h3>AI Developer</h3>
+								<h4>Information Services &amp; Technology, University of Waterloo</h4>
+							</div>
+							<div class="right-side">
+								<h4>Waterloo, ON &bull; Jan 2026 &ndash; Present</h4>
+							</div>
+						</div>
+						<ul>
+							<li>Engineered a multi-stage hybrid RAG pipeline (BM25 &rarr; vector search &rarr; RRF fusion &rarr; cross-encoder &rarr; Cohere reranking) after diagnosing a critical document ranking failure, achieving <strong>60% improvement in top-10 retrieval accuracy</strong> and <strong>36% improvement in top-3 precision</strong> across 35 query benchmarks.</li>
+							<li>Provisioned full Azure production environment from scratch including Key Vault, Managed Identity, CosmosDB autoscale, Static Web App with CORS, and Application Insights with custom alert rules and 90-day data retention.</li>
+							<li>Hardened production security by resolving Azure AD authentication failures and network security gaps, implemented Polly retry logic for CosmosDB and Jira API failures, and established GitHub Actions CI/CD with automated rollback on health check failure.</li>
+							<li>Developed 9-stage pipeline analytics dashboard, cutting performance debugging time by <strong>50%</strong>.</li>
+							<li>Automated <strong>100+</strong> weekly Jira tickets via LLM-powered multi-question parsing, eliminating manual triage.</li>
+						</ul>
+					</article>
+
+					<article class="work-exp">
+						<div>
+							<div class="left-side">
+								<h3>Thermal &amp; Battery Systems Lead</h3>
+								<h4>Battery Workforce Challenge &ndash; UW EVolution</h4>
+							</div>
+							<div class="right-side">
+								<h4>Waterloo, ON &bull; Jun 2025 &ndash; Dec 2025</h4>
+							</div>
+						</div>
+						<ul>
+							<li>Directed EV battery pack cooling subsystem design, improving heat-distribution efficiency by <strong>25%</strong> through optimized cold-plate placement and simulation coordination.</li>
+							<li>Automated battery test procedures using Python (pyVISA) and SCPI to control the Chroma 63800 AC/DC electronic load, cutting manual validation time by <strong>30%</strong>.</li>
+							<li>Mentored co-op engineers and authored a 40-page handover document, reducing design handover time by <strong>40%</strong> and preserving full knowledge continuity during leadership transition.</li>
+						</ul>
+					</article>
+
+					<article class="work-exp">
+						<div>
+							<div class="left-side">
+								<h3>Chief Operating Officer</h3>
+								<h4>NeuBrik Inc.</h4>
+							</div>
+							<div class="right-side">
+								<h4>Waterloo, ON &bull; Jan 2023 &ndash; May 2023</h4>
+							</div>
+						</div>
+						<ul>
+							<li>Directed operations and market strategy for a proptech startup, accelerating product launch timeline by <strong>30%</strong>.</li>
+							<li>Implemented Agile workflows (Jira, Confluence), improving team productivity by <strong>40%</strong>.</li>
+						</ul>
+					</article>
+
+					<article class="work-exp">
+						<div>
+							<div class="left-side">
+								<h3>Product Design Intern</h3>
+								<h4>E L E V 8</h4>
+							</div>
+							<div class="right-side">
+								<h4>Waterloo, ON &bull; Mar 2023 &ndash; Apr 2023</h4>
+							</div>
+						</div>
+						<ul>
+							<li>Designed an e-commerce site with a custom quiz tool and Figma-designed brand identity, growing social media engagement by <strong>40%</strong>.</li>
+							<li>Applied UI/UX and digital marketing strategies, boosting site retention rates by <strong>25%</strong>.</li>
+						</ul>
+					</article>
+				</section>
+
+				<!-- Projects -->
+				<section class="projects">
+					<h2><span>Projects</span></h2>
+
+					<article class="project">
+						<div class="project-title">
+							<h3><a target="_blank" rel="noopener noreferrer" href="https://github.com/Mahekk357/Mahdi-AI-Property-Assistant">Mahdi AI &ndash; Intelligent Property Search Assistant</a></h3>
+							<aside class="languages">&nbsp;Python, LangChain, FAISS, OpenAI GPT-4, Streamlit</aside>
+						</div>
+						<p>Built agentic RAG system for rental search using GPT-4 and vector embeddings, achieving <strong>100x</strong> improvement in listing relevance by semantically matching full listing context over filter-based search.</p>
+					</article>
+
+					<article class="project">
+						<div class="project-title">
+							<h3>Water Reservoir Automation System</h3>
+							<aside class="languages">&nbsp;STM32, C, PWM, UART, Proteus</aside>
+						</div>
+						<p>Designed embedded irrigation controller with PWM motor control, servo actuation, and ultrasonic sensing; engineered a 2-layer PCB with 15+ components for a 4-zone controller, reducing energy costs by <strong>25%</strong> ($48/day).</p>
+					</article>
+
+					<article class="project">
+						<div class="project-title">
+							<h3>Traffic Light Signal Controller</h3>
+							<aside class="languages">&nbsp;VHDL, FPGA</aside>
+						</div>
+						<p>Designed and simulated sequential logic for intersection control with state transitions and pedestrian signals on FPGA hardware.</p>
+					</article>
+
+					<article class="project">
+						<div class="project-title">
+							<h3>Frontend Projects</h3>
+							<aside class="languages">&nbsp;HTML, CSS, JavaScript</aside>
+						</div>
+						<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Mahekk357/spotify-clone">Spotify Clone</a>, <a target="_blank" rel="noopener noreferrer" href="https://github.com/Mahekk357/Simon-says-game">Simon Says Game</a>, <a target="_blank" rel="noopener noreferrer" href="https://github.com/Mahekk357/City_Skyline">City Skyline</a>.</p>
+					</article>
+				</section>
+			</main>
+		</div>
+	</div>
+	<script src="js/resume.js"></script>
+</body>
+
+</html>
